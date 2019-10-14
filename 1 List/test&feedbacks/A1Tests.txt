@@ -1,0 +1,38 @@
+Tests for LIST
+
+NOTE: when asserting that the following ADT operations yields (-->) a sequence, we check by traversing your list forwards AND backwards
+
+  Size Test 0: size(new List) --> 0
+  Size Test 1: size(insert(45.0,0)) --> 1
+  Size Test 2: size(insert(3,0),insert(2.0,1),insert(1.0,2),remove(0)) --> 2
+  Size Test 3: size(insert(3,0),insert(2.0,1),clear()) --> 0
+
+  Insert Test 0: insert(3,0),insert(5,1),insert(6,2),insert(4,1) --> 3,4,5,6
+  Insert Test 1: insert(3,0),insert(5,0),insert(6,0),insert(4,3) --> 6,5,3,4
+  Insert Test 2: insert(3,0),insert(5,1),insert(6,2),insert(4,3) --> 3,5,6,4
+  Insert Test 3: insert(3,1) --> empty, and should return false
+
+  Remove Test 0: insert(3,0),insert(5,1),insert(6,2),insert(4,1),remove(2) --> 3,4,6
+  Remove Test 1: insert(3,0),insert(5,1),insert(6,2),insert(4,1),remove(3) --> 3,4,5
+  Remove Test 2: insert(3,0),insert(5,1),insert(6,2),insert(4,1),remove(0) --> 4,5,6
+  Remove Test 3: insert(3,0),insert(5,1),insert(6,2),insert(4,1),remove(3) --> 3,4,5
+                   THEN, remove(7) should return false
+ 
+  Clear Test 0: insert(3,0),clear(),insert(5,0),insert(6,1),insert(4,0) --> 4,5,6
+  Clear Test 1: after clearing list isEmpty==true 
+                and clear(),insert(3,0),insert(5,0),insert(6,1),clear(),insert(4,0) --> 4
+                
+  Get Test 0: insert(3,0),insert(5,1), get(0) --> 3
+  Get Test 1: get(0) on empty list --> Double.NaN 
+
+
+  EverythingTest0: 
+    size( 
+      insert(3,0),insert(2.0,1),insert(1.0,2),remove(0),clear(),
+        insert(3,0),insert(2,1),insert(1,0),remove(2)
+    ) --> 2
+
+    and 
+
+    insert(3,0),insert(2.0,1),insert(1.0,2),remove(0),clear(),
+      insert(3,0),insert(2,1),insert(1,0),remove(2)                   --> 1,3
